@@ -1,0 +1,68 @@
+<ChatScreen>:
+    MDBoxLayout:
+        orientation: 'vertical'
+        padding: "20dp"
+        spacing: "20dp"
+        md_bg_color: 0, 0, 0, 1  # Fundo preto
+
+        # Título do chat
+        MDLabel:
+            id: chat_label
+            text: 'Chat'
+            font_style: 'H4'
+            size_hint_y: None
+            height: "60dp"
+            halign: "center"
+            theme_text_color: "Custom"
+            text_color: 0.2, 1, 0.2, 1  # Verde fluorescente para o título
+
+        # ScrollView para a lista de mensagens
+        ScrollView:
+            BoxLayout:
+                id: messages_list
+                orientation: 'vertical'
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: "10dp"
+                padding: "10dp"
+
+                # Adicionar cada mensagem com estilo
+                MDLabel:
+                    text: "Mensagem de exemplo"
+                    theme_text_color: "Custom"
+                    text_color: 1, 1, 1, 1  # Texto branco para mensagens
+                    size_hint_y: None
+                    height: "40dp"
+
+        # Campo de texto para nova mensagem
+        MDTextField:
+            id: message_input
+            hint_text: 'Digite sua mensagem...'
+            size_hint_y: None
+            height: "50dp"
+            mode: "rectangle"
+            line_color_focus: 0.2, 1, 0.2, 1  # Verde fluorescente no foco
+            text_color: 0, 0, 0, 1  # Texto preto
+            background_color: 1, 1, 1, 1  # Fundo branco
+            padding: [10, 10]  # Adicionando padding ao campo de texto
+            line_color_normal: 0.2, 1, 0.2, 1  # Borda verde fluorescente quando não focado
+
+        # Botão de enviar
+        MDRaisedButton:
+            text: 'Enviar'
+            size_hint_y: None
+            height: "50dp"
+            pos_hint: {"center_x": 0.5}
+            md_bg_color: 0.2, 1, 0.2, 1  # Verde fluorescente para o botão
+            text_color: 0, 0, 0, 1  # Texto preto
+            on_press: root.send_message()
+
+        # Botão de voltar para a tela de amigos
+        MDRaisedButton:
+            text: 'Voltar para Amigos'
+            size_hint_y: None
+            height: "50dp"
+            pos_hint: {"center_x": 0.5}
+            md_bg_color: 0.2, 0.2, 0.2, 1  # Cinza escuro para o botão de voltar
+            text_color: 1, 1, 1, 1  # Texto branco
+            on_press: root.go_to_friends()
